@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="대한민국 인기 캠핑장의 실시간 날씨와 7일 예보를 확인하고 바로 예약하세요." />
+  <meta name="theme-color" content="#0b1020" />
+  <title>캠핏 · 대한민국 캠핑장 날씨</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Pretendard:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⛺</text></svg>" />
+</head>
+<body>
+  <div class="aurora" aria-hidden="true">
+    <span class="blob blob--1"></span>
+    <span class="blob blob--2"></span>
+    <span class="blob blob--3"></span>
+  </div>
+
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand__logo">⛺</span>
+      <div class="brand__text">
+        <strong>캠핏</strong>
+        <small>CampFit · 캠핑장 날씨 &amp; 예약</small>
+      </div>
+    </div>
+    <nav class="site-nav">
+      <a href="#explore">캠핑장 둘러보기</a>
+      <a href="https://www.gocamping.or.kr/" target="_blank" rel="noopener">고캠핑</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="hero__eyebrow">전국 캠핑장 실시간 날씨</p>
+      <h1 class="hero__title">
+        떠나기 전, <span class="grad">하늘부터</span> 확인하세요
+      </h1>
+      <p class="hero__sub">
+        가고 싶은 캠핑장을 고르면 7일 날씨 예보를 한눈에. 마음에 들면 바로 예약까지.
+      </p>
+
+      <div class="search">
+        <span class="search__icon">🔍</span>
+        <input
+          id="searchInput"
+          type="search"
+          placeholder="캠핑장·지역 검색 (예: 강원, 바다, 계곡)"
+          autocomplete="off"
+          aria-label="캠핑장 검색"
+        />
+        <div class="chips" id="regionChips"></div>
+      </div>
+    </section>
+
+    <section id="explore" class="explore">
+      <div class="explore__head">
+        <h2>캠핑장 둘러보기</h2>
+        <span class="count" id="resultCount"></span>
+      </div>
+      <div class="grid" id="campgroundGrid"></div>
+      <p class="empty" id="emptyState" hidden>조건에 맞는 캠핑장이 없어요. 다른 키워드로 검색해 보세요. 🏕️</p>
+    </section>
+  </main>
+
+  <!-- 날씨 상세 모달 -->
+  <div class="modal" id="weatherModal" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal__close" data-close aria-label="닫기">✕</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p>날씨 데이터 · <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> · 예약 · <a href="https://www.gocamping.or.kr/" target="_blank" rel="noopener">고캠핑(한국관광공사)</a></p>
+    <p class="muted">⛺ 캠핏 — 즐거운 캠핑 되세요!</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
