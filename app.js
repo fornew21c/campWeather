@@ -95,6 +95,7 @@ function render() {
         <span class="card__region">${c.region}</span>
       </div>
       <h3 class="card__name">${c.name}</h3>
+      ${c.address ? `<p class="card__addr">📍 ${c.address}</p>` : ""}
       <p class="card__desc">${c.desc}</p>
       <div class="card__tags">${c.tags.map((t) => `<span class="tag">#${t}</span>`).join("")}</div>
       <div class="card__weather"><span class="wx-loading">날씨 불러오는 중…</span></div>
@@ -173,7 +174,7 @@ async function openModal(c) {
       <span class="m-emoji">${c.emoji}</span>
       <div>
         <h2 class="m-title">${c.name}</h2>
-        <span class="m-region">📍 ${c.region}</span>
+        <span class="m-region">📍 ${c.address || c.region}</span>
       </div>
     </div>
     <p class="m-desc">${c.desc}</p>
@@ -224,7 +225,7 @@ function renderModalWeather(c, data) {
       <span class="m-emoji">${c.emoji}</span>
       <div>
         <h2 class="m-title">${c.name}</h2>
-        <span class="m-region">📍 ${c.region}</span>
+        <span class="m-region">📍 ${c.address || c.region}</span>
       </div>
     </div>
     <p class="m-desc">${c.desc}</p>
